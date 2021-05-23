@@ -5,8 +5,9 @@ export const Container = styled.div`
 	flex-direction: Column;
 	background-color: red;
 	color: white;
-	margin: 1rem 0.5rem;
+	margin: 0.3rem 0.5rem;
 	padding: 1rem 0.5rem;
+	border-radius: 5px;
 `;
 
 export const TitleItem = styled.label`
