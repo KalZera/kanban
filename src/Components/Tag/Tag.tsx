@@ -1,7 +1,7 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 export const Tag: React.FC = () => {
-	return <div />;
+	return <Container>Tag 1</Container>;
 };
