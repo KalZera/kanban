@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-import { Container, TitleItem } from './styles';
+import { Container, TitleItem, SectionTags } from './styles';
 import { Tag } from 'Components';
 
-export const Item: React.FC = () => {
+interface Item {
+	nameItem: string;
+	tags?: string[];
+}
+interface Props {
+	item: Item;
+}
+
+export const Item: FunctionComponent<Props> = ({ item }) => {
 	return (
 		<Container>
-			<TitleItem>Documentar Padrões mobile</TitleItem>
-			<Tag>Tag 1</Tag>
+			<TitleItem>{item.nameItem}</TitleItem>
+			<SectionTags>
+				<Tag>Tag 1</Tag>
+			</SectionTags>
 		</Container>
 	);
 };
