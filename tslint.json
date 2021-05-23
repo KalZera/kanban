@@ -49,12 +49,7 @@
         ]
     },
     "rulesDirectory": [
-        "tslint-plugin-prettier"
+        "eslint-plugin-prettier"
     ],
-    "defaultSeverity": "error",
-    "linterOptions": {
-        "exclude": [
-            "src/serviceWorker.ts"
-        ]
-    }
+    "defaultSeverity": "error"
 }
