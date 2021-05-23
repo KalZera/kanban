@@ -7,6 +7,7 @@ export const Container = styled.div`
 	padding: 0.5rem;
 	margin-left: 10px;
 	min-width: 315px;
+	height: fit-content;
 `;
 
 export const TitleColumn = styled.div`
