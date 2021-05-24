@@ -1,4 +1,4 @@
 import { createStore } from 'redux';
-import { Column } from './Reducers';
+import { ColumnReducer } from './Reducers';
 
-export const store = createStore(Column);
+export const store = createStore(ColumnReducer);
