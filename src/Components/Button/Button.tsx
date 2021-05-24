@@ -1,5 +1,9 @@
 import React from 'react';
 
-export const Button: React.FC = () => {
-	return <button>Adicionar outro Cartão</button>;
+interface Props {
+	onClick: () => void;
+}
+
+export const Button: React.FC<Props> = ({ onClick }) => {
+	return <button onClick={onClick}>Adicionar outro Cartão</button>;
 };
