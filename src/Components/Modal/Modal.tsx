@@ -5,18 +5,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 interface Props {
 	open: boolean;
 	handleClose: () => void;
+	children: JSX.Element;
 }
 
-export const Modal: React.FC<Props> = ({ open, handleClose }) => {
+export const Modal: React.FC<Props> = ({ open, handleClose, children }) => {
 	return (
 		<ModalB show={open} onHide={handleClose}>
 			<ModalB.Header closeButton>
 				<ModalB.Title>Modal title</ModalB.Title>
 			</ModalB.Header>
-
-			<ModalB.Body>
-				<p>Modal body text goes here.</p>
-			</ModalB.Body>
+			{children}
 		</ModalB>
 	);
 };
