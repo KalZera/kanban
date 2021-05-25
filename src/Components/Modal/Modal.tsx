@@ -1,20 +1,28 @@
 import React from 'react';
 import { Modal as ModalB } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FiX } from 'react-icons/fi';
+import { Body, Container, CloseButton } from './styles';
 
 interface Props {
 	open: boolean;
 	handleClose: () => void;
+	title?: string;
 	children: JSX.Element;
 }
 
-export const Modal: React.FC<Props> = ({ open, handleClose, children }) => {
+export const Modal: React.FC<Props> = ({ open, handleClose, title, children }) => {
 	return (
 		<ModalB show={open} onHide={handleClose}>
-			<ModalB.Header closeButton>
-				<ModalB.Title>Modal title</ModalB.Title>
-			</ModalB.Header>
-			{children}
+			<Container>
+				<ModalB.Header>
+					<ModalB.Title>{title || ''}</ModalB.Title>
+					<CloseButton>
+						<FiX />
+					</CloseButton>
+				</ModalB.Header>
+				<Body>{children}</Body>
+			</Container>
 		</ModalB>
 	);
 };
