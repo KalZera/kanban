@@ -17,7 +17,7 @@ export const Modal: React.FC<Props> = ({ open, handleClose, title, children }) =
 			<Container>
 				<ModalB.Header>
 					<ModalB.Title>{title || ''}</ModalB.Title>
-					<CloseButton>
+					<CloseButton onClick={handleClose}>
 						<FiX />
 					</CloseButton>
 				</ModalB.Header>
