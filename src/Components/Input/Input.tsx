@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
-const Input: React.FC = () => {
-	return <div />;
+interface Props {
+	value: string;
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	placeholder?: string;
+}
+
+export const Input: React.FC<Props> = ({ value, onChange, placeholder }) => {
+	return <Container value={value} type="text" onChange={onChange} placeholder={placeholder || ''} />;
 };
-
-export default Input;
