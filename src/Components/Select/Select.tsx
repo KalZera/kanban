@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
-export const Select: React.FC = () => {
-	return <div />;
+interface Props {
+	options: { name: string; value: string | number }[];
+	onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+}
+export const Select: React.FC<Props> = ({ options, onChange }) => {
+	return (
+		<Container onChange={onChange}>
+			{options.map(option => (
+				<option key={option.value} value={option.value}>
+					{option.name}
+				</option>
+			))}
+		</Container>
+	);
 };
