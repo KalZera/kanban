@@ -2,19 +2,16 @@ import React, { FunctionComponent } from 'react';
 
 import { Container, TitleItem, SectionTags } from './styles';
 import { Tag } from 'Components';
+import { ItemsType } from 'store/Reducers/Items';
 
-interface Item {
-	nameItem: string;
-	tags?: string[];
-}
 interface Props {
-	item: Item;
+	item: ItemsType;
 }
 
 export const Item: FunctionComponent<Props> = ({ item }) => {
 	return (
 		<Container>
-			<TitleItem>{item.nameItem}</TitleItem>
+			<TitleItem>{item.title}</TitleItem>
 			<SectionTags>
 				<Tag>Tag 1</Tag>
 			</SectionTags>
