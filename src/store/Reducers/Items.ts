@@ -21,12 +21,21 @@ const INITIAL_STATE: ItemProps = {
 		{ id: 7, title: 'Ux Review', idColumn: 2, tag: '123' },
 	],
 };
-type ActionItem = { type: 'ADD_ITEM'; payload: string };
+
+interface payloadType {
+	idColumn: number;
+	item: string;
+}
+
+type ActionItem = { type: 'ADD_ITEM'; payload: payloadType };
 
 export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionItem): ItemProps => {
 	switch (action.type) {
 		case 'ADD_ITEM':
-			return { ...state, items: [...state.items, { id: state.items.length, title: action.payload, idColumn: 1, tag: 'Padrão' }] };
+			return {
+				...state,
+				items: [...state.items, { id: state.items.length, title: action.payload.item, idColumn: action.payload.idColumn, tag: 'Padrão' }],
+			};
 		default:
 			return state;
 	}
