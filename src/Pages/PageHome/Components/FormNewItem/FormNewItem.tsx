@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ColumnType } from 'store/Reducers';
 
@@ -13,7 +13,7 @@ export const FormNewItem: React.FC<Props> = ({ columns }) => {
 	const AddItem = () => {
 		dispatch({ type: 'ADD_ITEM', payload: { idColumn: column, item } });
 	};
-	const changeSelect = (event: any) => {
+	const changeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
 		setColumn(parseInt(event.target.value));
 	};
 	return (
