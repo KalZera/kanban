@@ -2,6 +2,8 @@ import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ColumnType } from 'store/Reducers';
 
+import { Input } from 'Components';
+
 interface Props {
 	columns: ColumnType[];
 }
@@ -16,10 +18,13 @@ export const FormNewItem: React.FC<Props> = ({ columns }) => {
 	const changeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
 		setColumn(parseInt(event.target.value));
 	};
+	const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
+		setItem(event.target.value);
+	};
 	return (
 		<>
 			<div>Novo Item</div>
-			<input type="text" value={item} onChange={e => setItem(e.target.value)} />
+			<Input value={item} onChange={changeInput} />
 			<select onChange={changeSelect}>
 				{columns.map(column => (
 					<option key={column.id} value={column.id}>

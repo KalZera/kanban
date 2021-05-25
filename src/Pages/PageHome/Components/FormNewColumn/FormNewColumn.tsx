@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { Input } from 'Components';
+
 export const FormNewColumn: React.FC = () => {
 	const [column, setColumn] = useState<string>('');
 	const dispatch = useDispatch();
@@ -10,7 +12,8 @@ export const FormNewColumn: React.FC = () => {
 	return (
 		<>
 			<div>Nova Coluna</div>
-			<input type="text" value={column} onChange={e => setColumn(e.target.value)} />
+			{/* informando como pode ser utilizado o onChange */}
+			<Input value={column} onChange={e => setColumn(e.target.value)} />
 			<button onClick={AddColumn}>Adicionar Coluna</button>
 		</>
 	);
