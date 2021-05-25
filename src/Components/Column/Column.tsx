@@ -2,24 +2,26 @@ import React, { FunctionComponent } from 'react';
 import { Container, TitleColumn } from './styles';
 import { Item } from './Components';
 import { Button } from 'Components';
+import { ColumnType, ItemsType } from 'store/Reducers';
 
-interface Item {
-	nameItem: string;
-	tags?: string[];
-}
+import { useDispatch } from 'react-redux';
 
 interface Props {
-	Column: { id: number; title: string; items: Item[] };
+	column: ColumnType;
+	items: ItemsType[];
 }
 
-export const Column: FunctionComponent<Props> = ({ Column }) => {
+export const Column: FunctionComponent<Props> = ({ column, items }) => {
+	const dispatch = useDispatch();
+	const AddItem = () => {
+		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
+	};
+
 	return (
 		<Container>
-			<TitleColumn> {Column.title} </TitleColumn>
-			{Column.items.map(item => (
-				<Item key={item.nameItem} item={item} />
-			))}
-			<Button />
+			<TitleColumn> {column.title} </TitleColumn>
+			{items.map(item => item.idColumn === column.id && <Item key={item.id} item={item} />)}
+			<Button onClick={AddItem} />
 		</Container>
 	);
 };
