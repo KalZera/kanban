@@ -12,9 +12,9 @@ export interface StateProps {
 
 const INITIAL_STATE: StateProps = {
 	columns: [
-		{ id: 0, type: 'default', title: 'To do', color: 'blue' },
-		{ id: 1, type: 'default', title: 'In Progress', color: 'green' },
-		{ id: 2, type: 'default', title: 'Done', color: 'gray' },
+		{ id: 0, type: 'default', title: 'To do', color: '#5CC4FF' },
+		{ id: 1, type: 'default', title: 'In Progress', color: '#945AD1' },
+		{ id: 2, type: 'default', title: 'Done', color: '#59D090' },
 	],
 };
 type Action = { type: 'ADD_COLUMN'; payload: string };
