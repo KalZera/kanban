@@ -2,8 +2,8 @@ type Type = 'default' | 'custom';
 export interface ColumnType {
 	id: number;
 	title: string;
+	type: Type;
 	color?: string;
-	type?: Type;
 }
 
 export interface StateProps {
@@ -12,17 +12,17 @@ export interface StateProps {
 
 const INITIAL_STATE: StateProps = {
 	columns: [
-		{ id: 0, title: 'To do', color: 'blue' },
-		{ id: 1, title: 'In Progress', color: 'green' },
-		{ id: 2, title: 'Done', color: 'gray' },
+		{ id: 0, type: 'default', title: 'To do', color: 'blue' },
+		{ id: 1, type: 'default', title: 'In Progress', color: 'green' },
+		{ id: 2, type: 'default', title: 'Done', color: 'gray' },
 	],
 };
 type Action = { type: 'ADD_COLUMN'; payload: string };
 
-export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Action) => {
+export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Action): StateProps => {
 	switch (action.type) {
 		case 'ADD_COLUMN':
-			return { ...state, columns: [...state.columns, { id: state.columns.length, title: action.payload }] };
+			return { ...state, columns: [...state.columns, { id: state.columns.length, title: action.payload, type: 'custom' }] };
 		default:
 			return state;
 	}
