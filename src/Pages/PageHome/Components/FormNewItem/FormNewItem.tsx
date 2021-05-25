@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ColumnType } from 'store/Reducers';
 
-import { Input } from 'Components';
+import { Input, Select } from 'Components';
 
 interface Props {
 	columns: ColumnType[];
@@ -21,17 +21,12 @@ export const FormNewItem: React.FC<Props> = ({ columns }) => {
 	const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
 		setItem(event.target.value);
 	};
+	const options = columns.map(column => ({ name: column.title, value: column.id }));
 	return (
 		<>
 			<div>Novo Item</div>
 			<Input value={item} onChange={changeInput} />
-			<select onChange={changeSelect}>
-				{columns.map(column => (
-					<option key={column.id} value={column.id}>
-						{column.title}
-					</option>
-				))}
-			</select>
+			<Select options={options} onChange={changeSelect} />
 			<button onClick={AddItem}>Adicionar Item</button>
 		</>
 	);
