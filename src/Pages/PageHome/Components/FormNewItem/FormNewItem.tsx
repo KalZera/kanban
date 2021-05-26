@@ -16,11 +16,11 @@ export const FormNewItem: React.FC<Props> = ({ columns }) => {
 	const AddItem = () => {
 		dispatch({ type: 'ADD_ITEM', payload: { idColumn: column, item } });
 	};
-
+	// para formulários maiores eu geralmente uso o Formik
 	const changeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
 		setColumn(parseInt(event.target.value));
 	};
-
+	// para formulários maiores eu geralmente uso o Formik
 	const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
 		setItem(event.target.value);
 	};

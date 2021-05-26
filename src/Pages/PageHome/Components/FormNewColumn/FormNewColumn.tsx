@@ -13,6 +13,7 @@ export const FormNewColumn: React.FC = () => {
 		<>
 			<div>Nova Coluna</div>
 			{/* informando como pode ser utilizado o onChange */}
+			{/* para formulários maiores eu geralmente uso o Formik  */}
 			<Input value={column} onChange={e => setColumn(e.target.value)} />
 			<Button onClick={AddColumn} text="Adicionar Coluna" styleButton="button" />
 		</>
