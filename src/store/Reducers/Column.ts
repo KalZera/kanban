@@ -8,6 +8,7 @@ export interface ColumnType {
 
 export interface StateProps {
 	columns: ColumnType[];
+	columnSelected: number | null;
 }
 
 const INITIAL_STATE: StateProps = {
@@ -16,10 +17,14 @@ const INITIAL_STATE: StateProps = {
 		{ id: 2, type: 'default', title: 'In Progress', color: '#945AD1' },
 		{ id: 3, type: 'default', title: 'Done', color: '#59D090' },
 	],
+	columnSelected: null,
 };
-type Action = { type: 'ADD_COLUMN'; payload: string };
+type ActionAdd = { type: 'ADD_COLUMN'; payload: string };
+type ActionSelect = { type: 'SELECT_COLUMN'; payload: number };
 
-export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Action): StateProps => {
+type Actions = ActionAdd | ActionSelect;
+
+export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Actions): StateProps => {
 	switch (action.type) {
 		case 'ADD_COLUMN':
 			return {
@@ -28,6 +33,11 @@ export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Action)
 					...state.columns,
 					{ id: parseInt(`${state.columns.length}${Math.floor(Math.random() * (1000 - 1) + 1)}`), title: action.payload, type: 'custom' },
 				],
+			};
+		case 'SELECT_COLUMN':
+			return {
+				...state,
+				columnSelected: action.payload,
 			};
 		default:
 			return state;
