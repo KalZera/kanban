@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ColumnType } from 'store/Reducers';
+import { ColumnType, TagType } from 'store/Reducers';
 
 import { Input, Select, Button } from 'Components';
 import { useComponentDidMount } from 'Hooks';
@@ -9,45 +9,55 @@ import { ItemsService } from 'Services';
 
 interface Props {
 	columns: ColumnType[];
+	tags: TagType[];
 }
 
-export const FormNewItem: React.FC<Props> = ({ columns }) => {
+export const FormNewItem: React.FC<Props> = ({ columns, tags }) => {
 	const { itemToChange, items } = useSelector((state: RootState) => state.items);
 	const [item, setItem] = useState<string>('');
-	const [column, setColumn] = useState<number>(0);
+	const [column, setColumn] = useState<number>(1);
+	const [tag, setTag] = useState<number>(1);
 	const dispatch = useDispatch();
 	useComponentDidMount(() => {
 		if (itemToChange.id) {
 			setItem(itemToChange.title);
 			setColumn(itemToChange.idColumn);
+			setTag(itemToChange.tag);
 		}
 	});
 
 	const AddItem = () => {
 		if (itemToChange.id) {
-			const newItems = ItemsService.ChangeItem(items, itemToChange, item, column);
+			const newItems = ItemsService.ChangeItem(items, itemToChange, item, column, tag);
 			dispatch({ type: 'CHANGE_ITEM', payload: newItems });
 		} else {
-			dispatch({ type: 'ADD_ITEM', payload: { idColumn: column, item } });
+			dispatch({ type: 'ADD_ITEM', payload: { idColumn: column, item, tag } });
 		}
 		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
 	};
 	// para formulários maiores eu geralmente uso o Formik
-	const changeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+	const changeSelectColumn = (event: ChangeEvent<HTMLSelectElement>) => {
 		setColumn(parseInt(event.target.value));
 	};
+
+	// para formulários maiores eu geralmente uso o Formik
+	const changeSelectTag = (event: ChangeEvent<HTMLSelectElement>) => {
+		setTag(parseInt(event.target.value));
+	};
+
 	// para formulários maiores eu geralmente uso o Formik
 	const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
 		setItem(event.target.value);
 	};
 
-	const options = columns.map(column => ({ name: column.title, value: column.id }));
-
+	const optionsColumns = columns.map(column => ({ name: column.title, value: column.id }));
+	const optionsTags = tags.map(tag => ({ name: tag.title, value: tag.id }));
 	return (
 		<>
 			<div>Tarefa</div>
 			<Input value={item} onChange={changeInput} />
-			<Select options={options} onChange={changeSelect} value={column} />
+			<Select options={optionsColumns} onChange={changeSelectColumn} value={column} />
+			<Select options={optionsTags} onChange={changeSelectTag} value={tag} />
 			<Button onClick={AddItem} text="Adicionar Item" styleButton="button" />
 		</>
 	);
