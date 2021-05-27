@@ -41,7 +41,15 @@ export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionIte
 		case 'ADD_ITEM':
 			return {
 				...state,
-				items: [...state.items, { id: state.items.length, title: action.payload.item, idColumn: action.payload.idColumn, tag: 'Padrão' }],
+				items: [
+					...state.items,
+					{
+						id: parseInt(`${state.items.length}${Math.floor(Math.random() * (1000 - 1) + 1)}`),
+						title: action.payload.item,
+						idColumn: action.payload.idColumn,
+						tag: 'Padrão',
+					},
+				],
 			};
 		case 'SELECT_ITEM':
 			return {
