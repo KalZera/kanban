@@ -2,8 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Container, TitleColumn } from './styles';
 import { FiPlus } from 'react-icons/fi';
 
-import { Item } from './Components';
-import { Button } from 'Components';
+import { Button, Item } from 'Components';
 import { ColumnType, ItemsType } from 'store/Reducers';
 
 import { useDispatch } from 'react-redux';
