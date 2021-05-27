@@ -31,7 +31,12 @@ export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Actions
 				...state,
 				columns: [
 					...state.columns,
-					{ id: parseInt(`${state.columns.length}${Math.floor(Math.random() * (1000 - 1) + 1)}`), title: action.payload, type: 'custom' },
+					{
+						id: parseInt(`${state.columns.length}${Math.floor(Math.random() * (1000 - 1) + 1)}`),
+						title: action.payload,
+						type: 'custom',
+						color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+					},
 				],
 			};
 		case 'SELECT_COLUMN':
