@@ -1,10 +1,10 @@
 //onde será feita todas as regras e alteração de dados.
 import { ItemsType } from 'store/Reducers';
 
-const ChangeItem = (items: ItemsType[], itemToChange: ItemsType, item: string, column: number): ItemsType[] => {
-	const newItems = items.filter(item => item.id !== itemToChange.id);
-	const itemChange = [...newItems, { ...itemToChange, idColumn: column, title: item }];
-	return itemChange;
+const ChangeItem = (items: ItemsType[], itemToChange: ItemsType, title: string, column: number, tag: number): ItemsType[] => {
+	// refatorar depois
+	const newItems = items.map(item => (item.id === itemToChange.id ? { ...item, idColumn: column, title, tag } : item));
+	return newItems;
 };
 
 export const ItemsService = { ChangeItem };
