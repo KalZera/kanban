@@ -1,20 +1,17 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ColumnType, TagType } from 'store/Reducers';
+// import { ColumnType } from 'store/Reducers/Column/TypesColumn';
+// import { TagType } from 'store/Reducers';
 
 import { Input, Select, Button } from 'Components';
 import { useComponentDidMount } from 'Hooks';
 import { RootState } from 'store';
 import { ItemsService } from 'Services';
 
-interface Props {
-	columns: ColumnType[];
-	tags: TagType[];
-}
-
-export const FormNewItem: React.FC<Props> = ({ columns, tags }) => {
+export const FormNewItem: FunctionComponent = () => {
 	const { itemToChange, items } = useSelector((state: RootState) => state.items);
-	const { columnSelected } = useSelector((state: RootState) => state.columns);
+	const { columns, columnSelected } = useSelector((state: RootState) => state.columns);
+	const { tags } = useSelector((state: RootState) => state.tag);
 	const [item, setItem] = useState<string>('');
 	const [column, setColumn] = useState<number>(columnSelected || 1);
 	const [tag, setTag] = useState<number>(1);

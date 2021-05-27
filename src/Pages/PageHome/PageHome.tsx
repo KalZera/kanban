@@ -2,36 +2,25 @@ import React from 'react';
 import { Content } from 'Styles';
 import { FiPlus } from 'react-icons/fi';
 
-import { Title, ColumnGroups, ButtonAddColumn, ButtonAddTag } from './styles';
+import { Title, ColumnGroups, ButtonAddTag } from './styles';
 import { Column, Button, Modal } from 'Components';
-import { FormNewColumn, FormNewItem, FormNewTag } from './Components';
+import { Form } from './Components';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { ColumnType } from 'store/Reducers';
+import { ColumnType } from 'store/Reducers/Column/TypesColumn';
 import { RootState } from 'store';
 
 export const PageHome: React.FC = () => {
 	const { columns } = useSelector((state: RootState) => state.columns);
 	const { modal } = useSelector((state: RootState) => state.modal);
 	const { items } = useSelector((state: RootState) => state.items);
-	const { tags } = useSelector((state: RootState) => state.tag);
+
 	const dispatch = useDispatch();
 	const AddColumn = () => {
 		dispatch({ type: 'TOGGLE_MODAL_COLUMN' });
 	};
 	const AddTag = () => {
 		dispatch({ type: 'TOGGLE_MODAL_TAG' });
-	};
-	const ChoseForm = (): JSX.Element => {
-		switch (modal.form) {
-			case 'column':
-				return <FormNewColumn />;
-			case 'tag':
-				return <FormNewTag />;
-			case 'item':
-			default:
-				return <FormNewItem columns={columns} tags={tags} />;
-		}
 	};
 
 	return (
@@ -47,7 +36,7 @@ export const PageHome: React.FC = () => {
 				))}
 			</ColumnGroups>
 			<Modal open={modal.open} handleClose={AddColumn} title="Adicionar">
-				<ChoseForm />
+				<Form form={modal.form} />
 			</Modal>
 		</Content>
 	);

@@ -5,6 +5,7 @@ import { Input, Button } from 'Components';
 
 export const FormNewTag: React.FC = () => {
 	const [tag, setTag] = useState<string>('');
+
 	const dispatch = useDispatch();
 	const AddTag = () => {
 		dispatch({ type: 'ADD_TAG', payload: tag });
