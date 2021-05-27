@@ -1,4 +1,4 @@
-import { ItemProps, ItemsType, ActionItem } from './typesItems';
+import { ItemProps, ItemsType, ActionItem } from './TypesItems';
 
 const INITIAL_STATE: ItemProps = {
 	items: [],

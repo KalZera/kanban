@@ -1,5 +1,5 @@
 //onde será feita todas as regras e alteração de dados.
-import { ItemsType } from 'store/Reducers';
+import { ItemsType } from 'store/Reducers/Items/TypesItems';
 
 const ChangeItem = (items: ItemsType[], itemToChange: ItemsType, title: string, column: number, tag: number): ItemsType[] => {
 	// refatorar depois
