@@ -1,11 +1,4 @@
-export interface TagType {
-	id: number;
-	title: string;
-}
-
-export interface TagProps {
-	tags: TagType[];
-}
+import { TagProps, Action } from './TypesTags';
 
 const INITIAL_STATE: TagProps = {
 	tags: [
@@ -14,7 +7,6 @@ const INITIAL_STATE: TagProps = {
 		{ id: 3, title: 'Prioridade Alta' },
 	],
 };
-type Action = { type: 'ADD_TAG'; payload: string };
 
 export const TagReducer = (state: TagProps = INITIAL_STATE, action: Action): TagProps => {
 	switch (action.type) {
