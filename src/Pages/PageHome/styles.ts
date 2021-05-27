@@ -24,3 +24,10 @@ export const ButtonAddColumn = styled.div`
 	padding: 1rem;
 	margin-left: 0.5rem;
 `;
+export const ButtonAddTag = styled.div`
+	height: fit-content;
+	display: flex;
+	min-width: 315px;
+	padding: 1rem;
+	margin-left: 0.5rem;
+`;

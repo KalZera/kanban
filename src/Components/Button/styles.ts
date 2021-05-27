@@ -9,12 +9,14 @@ export const Container = styled.button<{ typestyle: typeButton }>`
 			return { backgroundColor: 'transparent', padding: '0.35rem' };
 		}
 	}}
+
 	color: white;
 	border: none;
 	border-radius: 5px;
 	text-align: initial;
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
+	margin-right: 0.8rem;
 
 	&:hover {
 		text-decoration: underline;
