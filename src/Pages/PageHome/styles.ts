@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Title = styled.div`
 	margin-top: 2rem;
@@ -9,6 +10,10 @@ export const Title = styled.div`
 
 export const ColumnGroups = styled.div`
 	display: flex;
+
+	${media.lessThan('small')`
+		flex-direction:column;
+	`}
 `;
 
 export const ButtonAddColumn = styled.div`
