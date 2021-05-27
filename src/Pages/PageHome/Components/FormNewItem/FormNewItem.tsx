@@ -5,6 +5,7 @@ import { ColumnType } from 'store/Reducers';
 import { Input, Select, Button } from 'Components';
 import { useComponentDidMount } from 'Hooks';
 import { RootState } from 'store';
+import { ItemsService } from 'Services';
 
 interface Props {
 	columns: ColumnType[];
@@ -24,12 +25,12 @@ export const FormNewItem: React.FC<Props> = ({ columns }) => {
 
 	const AddItem = () => {
 		if (itemToChange.id) {
-			const newItems = items.filter(item => item.id !== itemToChange.id);
-			const itemChange = [...newItems, { ...itemToChange, idColumn: column, title: item }];
-			dispatch({ type: 'CHANGE_ITEM', payload: itemChange });
+			const newItems = ItemsService.ChangeItem(items, itemToChange, item, column);
+			dispatch({ type: 'CHANGE_ITEM', payload: newItems });
 		} else {
 			dispatch({ type: 'ADD_ITEM', payload: { idColumn: column, item } });
 		}
+		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
 	};
 	// para formulários maiores eu geralmente uso o Formik
 	const changeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
