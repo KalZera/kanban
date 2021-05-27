@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
 	modal: ModalReducer,
 	tag: TagReducer,
 });
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__();
 export const store = createStore(rootReducer, composeEnhancers);
 
