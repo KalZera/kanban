@@ -8,10 +8,11 @@ export const FormNewColumn: React.FC = () => {
 	const dispatch = useDispatch();
 	const AddColumn = () => {
 		dispatch({ type: 'ADD_COLUMN', payload: column });
+		dispatch({ type: 'TOGGLE_MODAL_COLUMN' });
 	};
 	return (
 		<>
-			<div>Nova Coluna</div>
+			<div>Coluna</div>
 			{/* informando como pode ser utilizado o onChange */}
 			{/* para formulários maiores eu geralmente uso o Formik  */}
 			<Input value={column} onChange={e => setColumn(e.target.value)} />
