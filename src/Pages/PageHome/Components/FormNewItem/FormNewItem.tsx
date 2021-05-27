@@ -14,8 +14,9 @@ interface Props {
 
 export const FormNewItem: React.FC<Props> = ({ columns, tags }) => {
 	const { itemToChange, items } = useSelector((state: RootState) => state.items);
+	const { columnSelected } = useSelector((state: RootState) => state.columns);
 	const [item, setItem] = useState<string>('');
-	const [column, setColumn] = useState<number>(1);
+	const [column, setColumn] = useState<number>(columnSelected || 1);
 	const [tag, setTag] = useState<number>(1);
 	const dispatch = useDispatch();
 	useComponentDidMount(() => {
@@ -33,6 +34,12 @@ export const FormNewItem: React.FC<Props> = ({ columns, tags }) => {
 		} else {
 			dispatch({ type: 'ADD_ITEM', payload: { idColumn: column, item, tag } });
 		}
+		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
+	};
+
+	const DeleteItem = () => {
+		const newItems = ItemsService.DeleteItem(items, itemToChange.id);
+		dispatch({ type: 'DELETE_ITEM', payload: newItems });
 		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
 	};
 	// para formulários maiores eu geralmente uso o Formik
@@ -59,6 +66,7 @@ export const FormNewItem: React.FC<Props> = ({ columns, tags }) => {
 			<Select options={optionsColumns} onChange={changeSelectColumn} value={column} />
 			<Select options={optionsTags} onChange={changeSelectTag} value={tag} />
 			<Button onClick={AddItem} text="Adicionar Item" styleButton="button" />
+			{itemToChange.id && <Button onClick={DeleteItem} text="Apagar Item" styleButton="button" />}
 		</>
 	);
 };

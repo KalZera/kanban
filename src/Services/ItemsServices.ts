@@ -7,4 +7,9 @@ const ChangeItem = (items: ItemsType[], itemToChange: ItemsType, title: string, 
 	return newItems;
 };
 
-export const ItemsService = { ChangeItem };
+const DeleteItem = (items: ItemsType[], idItem: number): ItemsType[] => {
+	const newItems = items.filter(item => item.id !== idItem);
+	return newItems;
+};
+
+export const ItemsService = { ChangeItem, DeleteItem };

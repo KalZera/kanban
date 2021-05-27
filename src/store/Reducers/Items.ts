@@ -11,16 +11,7 @@ export interface ItemProps {
 }
 
 const INITIAL_STATE: ItemProps = {
-	items: [
-		{ id: 0, title: 'Documentar Padrões mobile', idColumn: 1, tag: 1 },
-		{ id: 1, title: 'Ajustes fluxo de compra', idColumn: 1, tag: 2 },
-		{ id: 2, title: 'Banners da home', idColumn: 1, tag: 1 },
-		{ id: 3, title: 'Template de e-mail marketing', idColumn: 1, tag: 1 },
-		{ id: 4, title: 'Wireframe das telas', idColumn: 2, tag: 3 },
-		{ id: 5, title: 'Implementação do blog', idColumn: 3, tag: 3 },
-		{ id: 6, title: 'Análise de métricas', idColumn: 3, tag: 1 },
-		{ id: 7, title: 'Ux Review', idColumn: 3, tag: 1 },
-	],
+	items: [],
 	itemToChange: {} as ItemsType,
 };
 
@@ -34,8 +25,9 @@ type ActionChange = { type: 'CHANGE_ITEM'; payload: ItemsType[] };
 type ActionSelectItem = { type: 'SELECT_ITEM'; payload: ItemsType };
 type ActionAdd = { type: 'ADD_ITEM'; payload: payloadType };
 type ActionClear = { type: 'CLEAR_ITEM' };
+type ActionDelete = { type: 'DELETE_ITEM'; payload: ItemsType[] };
 
-type ActionItem = ActionChange | ActionAdd | ActionSelectItem | ActionClear;
+type ActionItem = ActionChange | ActionAdd | ActionSelectItem | ActionClear | ActionDelete;
 
 export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionItem): ItemProps => {
 	switch (action.type) {
@@ -63,6 +55,11 @@ export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionIte
 				itemToChange: {} as ItemsType,
 			};
 		case 'CHANGE_ITEM':
+			return {
+				...state,
+				items: action.payload,
+			};
+		case 'DELETE_ITEM':
 			return {
 				...state,
 				items: action.payload,
