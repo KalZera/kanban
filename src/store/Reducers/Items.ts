@@ -12,20 +12,21 @@ export interface ItemProps {
 
 const INITIAL_STATE: ItemProps = {
 	items: [
-		{ id: 0, title: 'Documentar Padrões mobile', idColumn: 0, tag: 1 },
-		{ id: 1, title: 'Ajustes fluxo de compra', idColumn: 0, tag: 2 },
-		{ id: 2, title: 'Banners da home', idColumn: 0, tag: 1 },
-		{ id: 3, title: 'Template de e-mail marketing', idColumn: 0, tag: 1 },
-		{ id: 4, title: 'Wireframe das telas', idColumn: 1, tag: 3 },
-		{ id: 5, title: 'Implementação do blog', idColumn: 2, tag: 3 },
-		{ id: 6, title: 'Análise de métricas', idColumn: 2, tag: 1 },
-		{ id: 7, title: 'Ux Review', idColumn: 2, tag: 1 },
+		{ id: 0, title: 'Documentar Padrões mobile', idColumn: 1, tag: 1 },
+		{ id: 1, title: 'Ajustes fluxo de compra', idColumn: 1, tag: 2 },
+		{ id: 2, title: 'Banners da home', idColumn: 1, tag: 1 },
+		{ id: 3, title: 'Template de e-mail marketing', idColumn: 1, tag: 1 },
+		{ id: 4, title: 'Wireframe das telas', idColumn: 2, tag: 3 },
+		{ id: 5, title: 'Implementação do blog', idColumn: 3, tag: 3 },
+		{ id: 6, title: 'Análise de métricas', idColumn: 3, tag: 1 },
+		{ id: 7, title: 'Ux Review', idColumn: 3, tag: 1 },
 	],
 	itemToChange: {} as ItemsType,
 };
 
 interface payloadType {
 	idColumn: number;
+	tag: number;
 	item: string;
 }
 
@@ -47,7 +48,7 @@ export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionIte
 						id: parseInt(`${state.items.length}${Math.floor(Math.random() * (1000 - 1) + 1)}`),
 						title: action.payload.item,
 						idColumn: action.payload.idColumn,
-						tag: 1,
+						tag: action.payload.tag,
 					},
 				],
 			};
