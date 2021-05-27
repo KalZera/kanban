@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Container, TitleItem, SectionTags } from './styles';
 import { Tag } from 'Components';
@@ -9,8 +10,13 @@ interface Props {
 }
 
 export const Item: FunctionComponent<Props> = ({ item }) => {
+	const dispatch = useDispatch();
+	const changeItem = () => {
+		dispatch({ type: 'SELECT_ITEM', payload: item });
+		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
+	};
 	return (
-		<Container>
+		<Container onClick={changeItem}>
 			<TitleItem>{item.title}</TitleItem>
 			<SectionTags>
 				<Tag>Tag 1</Tag>
