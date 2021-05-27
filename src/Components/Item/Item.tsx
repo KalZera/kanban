@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Container, TitleItem, SectionTags } from './styles';
 import { Tag } from 'Components';
-import { ItemsType } from 'store/Reducers/Items';
-import { TagType } from 'store/Reducers/Tags';
+import { ItemsType } from 'store/Reducers/Items/TypesItems';
+import { TagType } from 'store/Reducers/Tags/TypesTags';
 import { RootState } from 'store';
 
 interface Props {

@@ -3,7 +3,8 @@ import { Container, TitleColumn } from './styles';
 import { FiPlus } from 'react-icons/fi';
 
 import { Button, Item } from 'Components';
-import { ColumnType, ItemsType } from 'store/Reducers';
+import { ColumnType } from 'store/Reducers/Column/TypesColumn';
+import { ItemsType } from 'store/Reducers/Items/TypesItems';
 
 import { useDispatch } from 'react-redux';
 
