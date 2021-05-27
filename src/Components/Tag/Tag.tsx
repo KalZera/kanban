@@ -2,6 +2,10 @@ import React from 'react';
 
 import { Container } from './styles';
 
-export const Tag: React.FC = () => {
-	return <Container>Tag 1</Container>;
+interface Props {
+	textTag: string;
+}
+
+export const Tag: React.FC<Props> = ({ textTag }) => {
+	return <Container>{textTag}</Container>;
 };
