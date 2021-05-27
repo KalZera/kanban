@@ -16,6 +16,7 @@ interface Props {
 export const Column: FunctionComponent<Props> = ({ column, items }) => {
 	const dispatch = useDispatch();
 	const AddItem = () => {
+		dispatch({ type: 'CLEAR_ITEM' });
 		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
 	};
 
