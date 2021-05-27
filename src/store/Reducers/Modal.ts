@@ -1,4 +1,4 @@
-type formType = 'item' | 'column';
+type formType = 'item' | 'column' | 'tag';
 export interface ModalProps {
 	modal: { open: boolean; form: formType };
 }
@@ -18,6 +18,8 @@ export const ModalReducer = (state: ModalProps = INITIAL_STATE, action: ActionMo
 			return { modal: { open: !state.modal.open, form: 'item' } };
 		case 'TOGGLE_MODAL_COLUMN':
 			return { modal: { open: !state.modal.open, form: 'column' } };
+		case 'TOGGLE_MODAL_TAG':
+			return { modal: { open: !state.modal.open, form: 'tag' } };
 		default:
 			return state;
 	}
