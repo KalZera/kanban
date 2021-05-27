@@ -1,16 +1,10 @@
-type formType = 'item' | 'column' | 'tag';
-export interface ModalProps {
-	modal: { open: boolean; form: formType };
-}
-
+import { ModalProps, ActionModal } from './TypesModal';
 const INITIAL_STATE: ModalProps = {
 	modal: {
 		open: false,
 		form: 'column',
 	},
 };
-
-type ActionModal = { type: string };
 
 export const ModalReducer = (state: ModalProps = INITIAL_STATE, action: ActionModal): ModalProps => {
 	switch (action.type) {
