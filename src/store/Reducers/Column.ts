@@ -22,7 +22,13 @@ type Action = { type: 'ADD_COLUMN'; payload: string };
 export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Action): StateProps => {
 	switch (action.type) {
 		case 'ADD_COLUMN':
-			return { ...state, columns: [...state.columns, { id: state.columns.length, title: action.payload, type: 'custom' }] };
+			return {
+				...state,
+				columns: [
+					...state.columns,
+					{ id: parseInt(`${state.columns.length}${Math.floor(Math.random() * (1000 - 1) + 1)}`), title: action.payload, type: 'custom' },
+				],
+			};
 		default:
 			return state;
 	}
