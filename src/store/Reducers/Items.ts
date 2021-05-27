@@ -7,6 +7,7 @@ export interface ItemsType {
 
 export interface ItemProps {
 	items: ItemsType[];
+	itemToChange: ItemsType;
 }
 
 const INITIAL_STATE: ItemProps = {
@@ -20,6 +21,7 @@ const INITIAL_STATE: ItemProps = {
 		{ id: 6, title: 'Análise de métricas', idColumn: 2, tag: '123' },
 		{ id: 7, title: 'Ux Review', idColumn: 2, tag: '123' },
 	],
+	itemToChange: {} as ItemsType,
 };
 
 interface payloadType {
@@ -27,7 +29,12 @@ interface payloadType {
 	item: string;
 }
 
-type ActionItem = { type: 'ADD_ITEM'; payload: payloadType };
+type ActionChange = { type: 'CHANGE_ITEM'; payload: ItemsType[] };
+type ActionSelectItem = { type: 'SELECT_ITEM'; payload: ItemsType };
+type ActionAdd = { type: 'ADD_ITEM'; payload: payloadType };
+type ActionClear = { type: 'CLEAR_ITEM' };
+
+type ActionItem = ActionChange | ActionAdd | ActionSelectItem | ActionClear;
 
 export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionItem): ItemProps => {
 	switch (action.type) {
@@ -35,6 +42,21 @@ export const ItemsReducer = (state: ItemProps = INITIAL_STATE, action: ActionIte
 			return {
 				...state,
 				items: [...state.items, { id: state.items.length, title: action.payload.item, idColumn: action.payload.idColumn, tag: 'Padrão' }],
+			};
+		case 'SELECT_ITEM':
+			return {
+				...state,
+				itemToChange: action.payload,
+			};
+		case 'CLEAR_ITEM':
+			return {
+				...state,
+				itemToChange: {} as ItemsType,
+			};
+		case 'CHANGE_ITEM':
+			return {
+				...state,
+				items: action.payload,
 			};
 		default:
 			return state;
