@@ -16,7 +16,7 @@ export const FormNewTag: React.FC = () => {
 			{/* informando como pode ser utilizado o onChange */}
 			{/* para formulários maiores eu geralmente uso o Formik  */}
 			<Input value={tag} onChange={e => setTag(e.target.value)} />
-			<Button onClick={AddTag} text="Adicionar Coluna" styleButton="button" />
+			<Button onClick={AddTag} text="Adicionar Tag" styleButton="button" />
 		</>
 	);
 };
