@@ -4,6 +4,8 @@ Foi estruturado o projeto utilizando o Create-react-app
 
 ## Para iniciar o projeto
 
+É necessário ter o NodeJs e o Git Instalado.
+
 Clone este repositório do git, e acesse o diretório do projeto.
 Execute no terminal o comando `npm install`, para instalar todos os pacotes que foram utilizados no projeto, como:
 
