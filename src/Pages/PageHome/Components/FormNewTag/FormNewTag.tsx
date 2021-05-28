@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Input, Button } from 'Components';
+import { TitleBodyModal } from 'Styles';
 
 export const FormNewTag: React.FC = () => {
 	const [tag, setTag] = useState<string>('');
@@ -13,7 +14,7 @@ export const FormNewTag: React.FC = () => {
 	};
 	return (
 		<>
-			<div>Tag</div>
+			<TitleBodyModal>Tag</TitleBodyModal>
 			{/* informando como pode ser utilizado o onChange */}
 			{/* para formulários maiores eu geralmente uso o Formik  */}
 			<Input value={tag} onChange={e => setTag(e.target.value)} />

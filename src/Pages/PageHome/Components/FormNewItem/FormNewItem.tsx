@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { ColumnType } from 'store/Reducers/Column/TypesColumn';
-// import { TagType } from 'store/Reducers';
+import { TitleBodyModal } from 'Styles';
 
 import { Input, Select, Button } from 'Components';
 import { useComponentDidMount } from 'Hooks';
@@ -58,11 +57,11 @@ export const FormNewItem: FunctionComponent = () => {
 	const optionsTags = tags.map(tag => ({ name: tag.title, value: tag.id }));
 	return (
 		<>
-			<div>Tarefa</div>
+			<TitleBodyModal>Tarefa</TitleBodyModal>
 			<Input value={item} onChange={changeInput} />
 			<Select options={optionsColumns} onChange={changeSelectColumn} value={column} />
 			<Select options={optionsTags} onChange={changeSelectTag} value={tag} />
-			<Button onClick={AddItem} text="Adicionar Item" styleButton="button" />
+			<Button onClick={AddItem} text={itemToChange.id ? 'Atualizar' : 'Adicionar Tarefa'} styleButton="button" />
 			{itemToChange.id && <Button onClick={DeleteItem} text="Apagar Item" styleButton="button" />}
 		</>
 	);
