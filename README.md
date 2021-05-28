@@ -4,7 +4,8 @@ Foi estruturado o projeto utilizando o Create-react-app
 
 ## Para iniciar o projeto
 
-Clone este repositório do git, e execute no terminal o comando `npm install`, o gerenciado irá instalar todos os pacotes que foram utilizados no projeto, como:
+Clone este repositório do git, e acesse o diretório do projeto.
+Execute no terminal o comando `npm install`, para instalar todos os pacotes que foram utilizados no projeto, como:
 
 - Redux
 - React-redux
@@ -12,7 +13,7 @@ Clone este repositório do git, e execute no terminal o comando `npm install`, o
 - React-icons
 - entre outros
 
-Após instalar os pacotes execute no terminal o comando `npm start`.
+Após instalar todos os pacotes execute no terminal o comando `npm start`.
 
 Para abrir o projeto no browser acesse [http://localhost:3000](http://localhost:3000).
 
