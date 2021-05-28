@@ -12,9 +12,9 @@ Clone este repositório do git, e execute no terminal o comando `npm install`, o
 - React-icons
 - entre outros
 
-após instalar os pacotes execute no terminal o comando `npm start`.
+Após instalar os pacotes execute no terminal o comando `npm start`.
 
-Irá abrir o projeto no browser acesse [http://localhost:3000](http://localhost:3000).
+Para abrir o projeto no browser acesse [http://localhost:3000](http://localhost:3000).
 
 ## Para buildar o projeto (documentação create-react-app)
 
