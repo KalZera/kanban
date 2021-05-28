@@ -24,3 +24,27 @@ export const TitleColumn = styled.div`
 	font-size: 18px;
 	font-weight: 500;
 `;
+
+export const DeleteButton = styled.div`
+	background-color: #9a9a9a;
+	height: min-content;
+	border-radius: 100%;
+	padding: 0.2rem;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	span {
+		height: 15px;
+	}
+
+	&:hover {
+		background-color: #d0d0d0;
+	}
+`;
+
+export const SectionTitle = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;

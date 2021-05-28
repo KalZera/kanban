@@ -24,6 +24,12 @@ export const ColumnReducer = (state: StateProps = INITIAL_STATE, action: Actions
 					},
 				],
 			};
+		case 'DELETE_COLUMN':
+			//outra forma de remover items, dessa vez não passa pelo service
+			return {
+				...state,
+				columns: state.columns.filter(column => column.id !== action.payload),
+			};
 		case 'SELECT_COLUMN':
 			return {
 				...state,

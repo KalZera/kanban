@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Container, TitleColumn } from './styles';
-import { FiPlus } from 'react-icons/fi';
+import { Container, TitleColumn, DeleteButton, SectionTitle } from './styles';
+import { FiPlus, FiX } from 'react-icons/fi';
 
 import { Button, Item } from 'Components';
 import { ColumnType } from 'store/Reducers/Column/TypesColumn';
@@ -21,9 +21,20 @@ export const Column: FunctionComponent<Props> = ({ column, items }) => {
 		dispatch({ type: 'TOGGLE_MODAL_ITEM' });
 	};
 
+	const deleteColumn = () => {
+		dispatch({ type: 'DELETE_COLUMN', payload: column.id });
+	};
+
 	return (
 		<Container color={column.color || 'blue'}>
-			<TitleColumn> {column.title} </TitleColumn>
+			<SectionTitle>
+				<TitleColumn> {column.title} </TitleColumn>
+				{column.type === 'custom' && (
+					<DeleteButton onClick={deleteColumn}>
+						<FiX />
+					</DeleteButton>
+				)}
+			</SectionTitle>
 			{items.map(item => item.idColumn === column.id && <Item key={item.id} item={item} />)}
 			<Button icon={<FiPlus />} onClick={AddItem} text="Adicionar outro Cartão" />
 		</Container>

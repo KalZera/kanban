@@ -14,5 +14,6 @@ export interface StateProps {
 
 type ActionAdd = { type: 'ADD_COLUMN'; payload: string };
 type ActionSelect = { type: 'SELECT_COLUMN'; payload: number };
+type ActionDelete = { type: 'DELETE_COLUMN'; payload: number };
 
-export type Actions = ActionAdd | ActionSelect;
+export type Actions = ActionAdd | ActionSelect | ActionDelete;
