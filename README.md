@@ -1,6 +1,6 @@
 # Projeto Kanban
 
-Foi Iniciado o projeto utilizando o Create-react-app
+Foi estruturado o projeto utilizando o Create-react-app
 
 ## Para iniciar o projeto
 
