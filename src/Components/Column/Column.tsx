@@ -35,7 +35,7 @@ export const Column: FunctionComponent<Props> = ({ column, items }) => {
 					</DeleteButton>
 				)}
 			</SectionTitle>
-			{items.map(item => item.idColumn === column.id && <Item key={item.id} item={item} />)}
+			{items.map(item => item.idColumn === column.id && <Item key={item.id} item={item} colorTag={column.color} />)}
 			<Button icon={<FiPlus />} onClick={AddItem} text="Adicionar outro Cartão" />
 		</Container>
 	);

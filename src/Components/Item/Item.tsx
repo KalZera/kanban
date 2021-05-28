@@ -9,9 +9,10 @@ import { RootState } from 'store';
 
 interface Props {
 	item: ItemsType;
+	colorTag: string;
 }
 
-export const Item: FunctionComponent<Props> = ({ item }) => {
+export const Item: FunctionComponent<Props> = ({ item, colorTag }) => {
 	const dispatch = useDispatch();
 	const { tags } = useSelector((state: RootState) => state.tag);
 	const changeItem = () => {
@@ -22,7 +23,9 @@ export const Item: FunctionComponent<Props> = ({ item }) => {
 	return (
 		<Container onClick={changeItem}>
 			<TitleItem>{item.title}</TitleItem>
-			<SectionTags>{tags.map((tag: TagType) => tag.id === item.tag && <Tag key={tag.id} textTag={tag.title} />)}</SectionTags>
+			<SectionTags>
+				{tags.map((tag: TagType) => tag.id === item.tag && <Tag key={tag.id} colorTag={colorTag} textTag={tag.title} />)}
+			</SectionTags>
 		</Container>
 	);
 };

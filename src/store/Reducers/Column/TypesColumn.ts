@@ -4,7 +4,7 @@ export interface ColumnType {
 	id: number;
 	title: string;
 	type: Type;
-	color?: string;
+	color: string;
 }
 
 export interface StateProps {
