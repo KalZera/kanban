@@ -1,23 +1,22 @@
-# Getting Started with Create React App
+# Projeto Kanban
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Foi Iniciado o projeto utilizando o Create-react-app
 
-## Available Scripts
+## Para iniciar o projeto
 
-In the project directory, you can run:
+Clone este repositório do git, e execute no terminal o comando `npm install`, o gerenciado irá instalar todos os pacotes que foram utilizados no projeto, como:
 
-### `npm start`
+- Redux
+- React-redux
+- React-bootstrap
+- React-icons
+- entre outros
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+após instalar os pacotes execute no terminal o comando `npm start`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Irá abrir o projeto no browser acesse [http://localhost:3000](http://localhost:3000).
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Para buildar o projeto (documentação create-react-app)
 
 ### `npm run build`
 
